@@ -1,15 +1,13 @@
 <h1>Sign Up</h1>
-  <form method="post" action="/users" accept-charset="UTF-8" data-turbo=false>
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
-    
-    <label for="user_username">Username</label>
-    <input type="text" id="user_username" name="user[username]">
+  <%= form_with model: @user do |f| %>
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username, placeholder: "max_mustermann" %>
 
-    <label for="user_email">E-Mail</label>
-    <input type="text" id="user_email" name="user[email]">
+    <%= f.label :email, "Email Address" %>
+    <%= f.text_field :email, placeholder: "example@example.com" %>
 
-    <label for="user_password">Password</label>
-    <input type="password" id="user_password" name="user[password]">
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password, placeholder: "Choose a secure password" %>
 
-    <input type="submit" value="Create User">
-  </form>
+    <%= f.submit "Create User" %>
+  <% end %>
